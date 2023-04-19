@@ -68,8 +68,9 @@ text_in = "跨境河流是养育沿岸|人民的生命之源长期以来为帮�
 
 vads = text_in.split("|")
 rec_result_all = ""
+param_dict = {"cache": []}
 for vad in vads:
-    result = punc.punctuate(vad)
+    result = punc.punctuate(vad, param_dict=param_dict)
     rec_result_all += result[0]
     logging.info(f"Part: {rec_result_all}")
 
