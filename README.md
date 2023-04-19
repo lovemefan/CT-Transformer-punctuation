@@ -22,7 +22,7 @@
 
 - **General**
   
-  fsmn VAD was trained on chinese corpora. and it finished anti-noise training, with certain noise rejection ability performs well on audios from different domains with various background noise and quality levels.
+  ctt punctuator was trained on chinese-english code switch corpora.
   - [x] offline punctuator
   - [x] online punctuator
   - [x] punctuator for chinese-english code switch
