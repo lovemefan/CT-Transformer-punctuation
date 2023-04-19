@@ -38,12 +38,11 @@
 ## Installation
 
 ```bash
-sudo apt install git-lfs
-# if the code raise : failed:Protobuf parsing failed.
-# you should install git-lfs and run git lfs install
-git lfs install
-# use lfs download onnx file
+
+
 git clone https://github.com/lovemefan/CT-Transformer-punctuation.git
+# download onnx model from huggingface
+wget "https://huggingface.co/lovemefan/ctt_punctuator/resolve/main/cttpunctuator/src/onnx/punc.onnx" -O cttpunctuator/src/onnx/punc.onnx
 cd CT-Transformer-punctuation
 pip install -e .
 ```
