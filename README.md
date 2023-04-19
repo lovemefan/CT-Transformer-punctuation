@@ -26,6 +26,8 @@
   - [x] offline punctuator
   - [x] online punctuator
   - [x] punctuator for chinese-english code switch
+  
+  the onnx model file is 279M, you can download it from [here](https://github.com/lovemefan/CT-Transformer-punctuation/raw/main/cttpunctuator/src/onnx/punc.onnx)
 
 - **Highly Portable**
 
@@ -43,13 +45,13 @@ git lfs install
 # use lfs download onnx file
 git clone https://github.com/lovemefan/CT-Transformer-punctuation.git
 cd CT-Transformer-punctuation
-python setup.py install
+pip install -e .
 ```
 
 ## Usage
 
 ```python
-from ctt_punctuator import CttPunctuator
+from cttPunctuator import CttPunctuator
 import logging
 logging.basicConfig(
     level=logging.INFO,
