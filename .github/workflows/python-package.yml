@@ -30,5 +30,9 @@ jobs:
         pip install -U setuptools wheel
     - name: Test ctt punctuator
       run: |
+        apt install git-lfs
+        git lfs install
+        git clone https://github.com/lovemefan/CT-Transformer-punctuation.git
+        cd CT-Transformer-punctuation
         pip3 install -e .
         python3 test/test.py
