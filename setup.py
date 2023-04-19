@@ -17,7 +17,7 @@ requirements = {
     "install": [
         "setuptools<=65.0",
         "PyYAML",
-        "typeguard==2.13.3"
+        "typeguard==2.13.3",
         "onnxruntime==1.14.1",
     ],
     "setup": [
