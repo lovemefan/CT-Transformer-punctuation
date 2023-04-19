@@ -1,7 +1,13 @@
+import logging
 import os.path
 from pathlib import Path
 from typing import List, Union, Tuple
 import numpy as np
+
+from cttpunctuator.src.utils.OrtInferSession import OrtInferSession, ONNXRuntimeError
+from cttpunctuator.src.utils.text_post_process import TokenIDConverter, read_yaml, code_mix_split_words, \
+    split_to_mini_sentence
+
 
 class CT_Transformer():
     """
@@ -15,11 +21,11 @@ class CT_Transformer():
                  quantize: bool = False,
                  intra_op_num_threads: int = 4
                  ):
-
-        if not Path(model_dir).exists():
+        model_dir = model_dir or os.path.join(os.path.dirname(__file__), "onnx")
+        if model_dir is None or not Path(model_dir).exists():
             raise FileNotFoundError(f'{model_dir} does not exist.')
 
-        model_file = os.path.join(model_dir, 'model.onnx')
+        model_file = os.path.join(model_dir, 'punc.onnx')
         if quantize:
             model_file = os.path.join(model_dir, 'model_quant.onnx')
         config_file = os.path.join(model_dir, 'punc.yaml')
@@ -225,7 +231,7 @@ class CT_Transformer_VadRealtime(CT_Transformer):
         param_dict[cache_key] = cache_out
         return sentence_out, sentence_punc_list_out, cache_out
 
-    def vad_mask(self, size, vad_pos, dtype=np.bool):
+    def vad_mask(self, size, vad_pos, dtype=np.bool_):
         """Create mask for decoder self-attention.
 
         :param int size: size of mask
