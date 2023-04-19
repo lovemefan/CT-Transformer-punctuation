@@ -32,7 +32,7 @@ jobs:
       run: |
         sudo apt install git-lfs
         git lfs install
-        git lsf clone https://github.com/lovemefan/CT-Transformer-punctuation.git
+        git lfs clone https://github.com/lovemefan/CT-Transformer-punctuation.git
         cd CT-Transformer-punctuation
         pip3 install -e .
         python3 test/test.py
