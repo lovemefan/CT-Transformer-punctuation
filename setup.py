@@ -31,13 +31,14 @@ setup_requires = requirements["setup"]
 
 
 setup(
-    name="ctt-punctuator",
+    name="cttpunctuator",
     version=version,
     url="https://github.com/lovemefan/CT-Transformer-punctuation",
     author="Lovemefan, Yunnan Key Laboratory of Artificial Intelligence, "
     "Kunming University of Science and Technology, Kunming, Yunnan ",
     author_email="lovemefan@outlook.com",
-    description="ctt-punctuator: A enterprise-grade punctuator after chinese asr based on ct-trainsformer from funasr opensource",
+    description="ctt-punctuator: A enterprise-grade punctuator after chinese asr based "
+    "on ct-transformer from funasr opensource",
     long_description=open(os.path.join(dirname, "README.md"), encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     license="The MIT License",
