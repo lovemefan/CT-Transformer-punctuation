@@ -28,7 +28,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         pip install -U setuptools wheel
-    - name: Test fsmnvad
+    - name: Test ctt punctuator
       run: |
         pip3 install -e .
         python3 test/test.py
