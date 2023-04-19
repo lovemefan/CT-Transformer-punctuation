@@ -4,7 +4,7 @@
 # @Author    :lovemefan
 # @Email     :lovemefan@outlook.com
 
-from ctt_punctuator import CttPunctuator
+from cttPunctuator import CttPunctuator
 import logging
 logging.basicConfig(
     level=logging.INFO,
