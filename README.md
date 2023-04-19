@@ -36,6 +36,11 @@
 ## Installation
 
 ```bash
+sudo apt install git-lfs
+# if the code raise : failed:Protobuf parsing failed.
+# you should install git-lfs and run git lfs install
+git lfs install
+# use lfs download onnx file
 git clone https://github.com/lovemefan/CT-Transformer-punctuation.git
 cd CT-Transformer-punctuation
 python setup.py install
