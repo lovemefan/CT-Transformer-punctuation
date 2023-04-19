@@ -45,6 +45,11 @@ python setup.py install
 
 ```python
 from ctt_punctuator import CttPunctuator
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s %(levelname)s] [%(filename)s:%(lineno)d %(module)s.%(funcName)s] %(message)s",
+)
 # offline mode
 punc = CttPunctuator()
 text = "据报道纽约时报使用ChatGPT创建了一个情人节消息生成器用户只需输入几个提示就可以得到一封自动生成的情书"
