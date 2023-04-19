@@ -5,12 +5,13 @@ from typing import Tuple, Union
 
 import numpy as np
 
-from cttpunctuator.src.utils.OrtInferSession import (ONNXRuntimeError,
-                                                     OrtInferSession)
-from cttpunctuator.src.utils.text_post_process import (TokenIDConverter,
-                                                       code_mix_split_words,
-                                                       read_yaml,
-                                                       split_to_mini_sentence)
+from cttpunctuator.src.utils.OrtInferSession import ONNXRuntimeError, OrtInferSession
+from cttpunctuator.src.utils.text_post_process import (
+    TokenIDConverter,
+    code_mix_split_words,
+    read_yaml,
+    split_to_mini_sentence,
+)
 
 
 class CT_Transformer:
