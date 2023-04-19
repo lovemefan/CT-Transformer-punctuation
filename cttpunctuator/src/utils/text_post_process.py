@@ -4,9 +4,10 @@
 # @Author    :lovemefan
 # @Email     :lovemefan@outlook.com
 from pathlib import Path
-from typing import Union, List, Iterable, Dict
-import yaml
+from typing import Dict, Iterable, List, Union
+
 import numpy as np
+import yaml
 from typeguard import check_argument_types
 
 
@@ -15,8 +16,10 @@ class TokenIDConverterError(Exception):
 
 
 class TokenIDConverter:
-    def __init__(self, token_list: Union[List, str],
-                 ):
+    def __init__(
+        self,
+        token_list: Union[List, str],
+    ):
         check_argument_types()
 
         self.token_list = token_list
@@ -27,11 +30,11 @@ class TokenIDConverter:
     def get_num_vocabulary_size(self) -> int:
         return len(self.token_list)
 
-    def ids2tokens(self,
-                   integers: Union[np.ndarray, Iterable[int]]) -> List[str]:
+    def ids2tokens(self, integers: Union[np.ndarray, Iterable[int]]) -> List[str]:
         if isinstance(integers, np.ndarray) and integers.ndim != 1:
             raise TokenIDConverterError(
-                f"Must be 1 dim ndarray, but got {integers.ndim}")
+                f"Must be 1 dim ndarray, but got {integers.ndim}"
+            )
         return [self.token_list[i] for i in integers]
 
     def tokens2ids(self, tokens: Iterable[str]) -> List[int]:
@@ -47,9 +50,10 @@ def split_to_mini_sentence(words: list, word_limit: int = 20):
     length = len(words)
     sentence_len = length // word_limit
     for i in range(sentence_len):
-        sentences.append(words[i * word_limit:(i + 1) * word_limit])
+        sentences.append(words[i * word_limit : (i + 1) * word_limit])
     if length % word_limit > 0:
-        sentences.append(words[sentence_len * word_limit:])
+        sentences.append(words[sentence_len * word_limit :])
+    return sentences
 
 
 def code_mix_split_words(text: str):
@@ -75,8 +79,8 @@ def code_mix_split_words(text: str):
 
 def read_yaml(yaml_path: Union[str, Path]) -> Dict:
     if not Path(yaml_path).exists():
-        raise FileExistsError(f'The {yaml_path} does not exist.')
+        raise FileExistsError(f"The {yaml_path} does not exist.")
 
-    with open(str(yaml_path), 'rb') as f:
+    with open(str(yaml_path), "rb") as f:
         data = yaml.load(f, Loader=yaml.Loader)
     return data
