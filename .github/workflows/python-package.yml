@@ -31,6 +31,6 @@ jobs:
         pip install -U setuptools wheel
     - name: Test ctt punctuator
       run: |
-        curl "https://huggingface.co/lovemefan/ctt_punctuator/resolve/main/cttpunctuator/src/onnx/punc.onnx" -O cttpunctuator/src/onnx/punc.onnx
+        curl -L "https://huggingface.co/lovemefan/ctt_punctuator/resolve/main/cttpunctuator/src/onnx/punc.onnx"  -o cttpunctuator/src/onnx/punc.onnx
         pip3 install -e .
         python3 test/test.py
