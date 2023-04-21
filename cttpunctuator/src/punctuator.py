@@ -1,5 +1,6 @@
 import logging
 import os.path
+import platform
 from pathlib import Path
 from typing import Tuple, Union
 
@@ -70,17 +71,21 @@ class CT_Transformer:
             mini_sentence_id = mini_sentences_id[mini_sentence_i]
             mini_sentence = cache_sent + mini_sentence
             mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int64")
+            if platform.system() == "Windows":
+                text_lengths = np.array([len(mini_sentence)], dtype="int64")
+            else:
+                text_lengths = np.array([len(mini_sentence)], dtype="int32")
             data = {
                 "text": mini_sentence_id[None, :],
-                "text_lengths": np.array([len(mini_sentence_id)], dtype="int32"),
+                "text_lengths": text_lengths,
             }
             try:
                 outputs = self.infer(data["text"], data["text_lengths"])
                 y = outputs[0]
                 punctuations = np.argmax(y, axis=-1)[0]
                 assert punctuations.size == len(mini_sentence)
-            except ONNXRuntimeError:
-                logging.warning("error")
+            except ONNXRuntimeError as e:
+                logging.exception(e)
 
             # Search for the last Period/QuestionMark as cache
             if mini_sentence_i < len(mini_sentences) - 1:
