@@ -71,12 +71,9 @@ class CT_Transformer:
             mini_sentence_id = mini_sentences_id[mini_sentence_i]
             mini_sentence = cache_sent + mini_sentence
 
-            if platform.system() == "Windows":
-                mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int32")
-                text_lengths = np.array([len(mini_sentence)], dtype="int32")
-            else:
-                mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int64")
-                text_lengths = np.array([len(mini_sentence)], dtype="int32")
+            mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int32")
+            text_lengths = np.array([len(mini_sentence)], dtype="int32")
+
             data = {
                 "text": mini_sentence_id[None, :],
                 "text_lengths": text_lengths,
@@ -202,7 +199,7 @@ class CT_Transformer_VadRealtime(CT_Transformer):
             mini_sentence_id = np.concatenate((cache_sent_id, mini_sentence_id), axis=0)
             text_length = len(mini_sentence_id)
             data = {
-                "input": mini_sentence_id[None, :],
+                "input": np.array(mini_sentence_id[None, :], dtype="int64"),
                 "text_lengths": np.array([text_length], dtype="int32"),
                 "vad_mask": self.vad_mask(text_length, len(cache))[
                     None, None, :, :
