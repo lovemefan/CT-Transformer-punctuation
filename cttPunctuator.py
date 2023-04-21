@@ -13,8 +13,7 @@ __version__ = "v0.0.1"
 import logging
 import threading
 
-from cttpunctuator.src.punctuator import (CT_Transformer,
-                                          CT_Transformer_VadRealtime)
+from cttpunctuator.src.punctuator import CT_Transformer, CT_Transformer_VadRealtime
 
 logging.basicConfig(
     level=logging.INFO,
