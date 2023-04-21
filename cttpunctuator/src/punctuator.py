@@ -71,7 +71,7 @@ class CT_Transformer:
             mini_sentence_id = mini_sentences_id[mini_sentence_i]
             mini_sentence = cache_sent + mini_sentence
 
-            mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int32")
+            mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int64")
             text_lengths = np.array([len(mini_sentence)], dtype="int32")
 
             data = {
