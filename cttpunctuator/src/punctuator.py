@@ -214,8 +214,8 @@ class CT_Transformer_VadRealtime(CT_Transformer):
                 y = outputs[0]
                 punctuations = np.argmax(y, axis=-1)[0]
                 assert punctuations.size == len(mini_sentence)
-            except ONNXRuntimeError:
-                logging.warning("error")
+            except ONNXRuntimeError as e:
+                logging.error(e)
 
             # Search for the last Period/QuestionMark as cache
             if mini_sentence_i < len(mini_sentences) - 1:
