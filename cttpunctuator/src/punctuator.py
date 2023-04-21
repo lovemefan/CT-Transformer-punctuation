@@ -73,7 +73,7 @@ class CT_Transformer:
 
             if platform.system() == "Windows":
                 mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int64")
-                text_lengths = np.array([len(mini_sentence)], dtype="int32")
+                text_lengths = np.array([len(mini_sentence)], dtype="int64")
             else:
                 mini_sentence_id = np.array(cache_sent_id + mini_sentence_id, dtype="int64")
                 text_lengths = np.array([len(mini_sentence)], dtype="int32")
