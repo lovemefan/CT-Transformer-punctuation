@@ -1,5 +1,6 @@
 import logging
 import os.path
+import pickle
 import platform
 from pathlib import Path
 from typing import Tuple, Union
@@ -39,7 +40,8 @@ class CT_Transformer:
         if quantize:
             model_file = os.path.join(model_dir, "model_quant.onnx")
         config_file = os.path.join(model_dir, "punc.yaml")
-        config = read_yaml(config_file)
+        with open(config_file, 'rb') as file:
+            config = pickle.load(file)
 
         self.converter = TokenIDConverter(config["token_list"])
         self.ort_infer = OrtInferSession(
