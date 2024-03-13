@@ -1,7 +1,6 @@
 import logging
 import os.path
 import pickle
-import platform
 from pathlib import Path
 from typing import Tuple, Union
 
@@ -11,7 +10,6 @@ from cttpunctuator.src.utils.OrtInferSession import ONNXRuntimeError, OrtInferSe
 from cttpunctuator.src.utils.text_post_process import (
     TokenIDConverter,
     code_mix_split_words,
-    read_yaml,
     split_to_mini_sentence,
 )
 
@@ -39,8 +37,8 @@ class CT_Transformer:
         model_file = os.path.join(model_dir, "punc.onnx")
         if quantize:
             model_file = os.path.join(model_dir, "model_quant.onnx")
-        config_file = os.path.join(model_dir, "punc.yaml")
-        with open(config_file, 'rb') as file:
+        config_file = os.path.join(model_dir, "punc.bin")
+        with open(config_file, "rb") as file:
             config = pickle.load(file)
 
         self.converter = TokenIDConverter(config["token_list"])

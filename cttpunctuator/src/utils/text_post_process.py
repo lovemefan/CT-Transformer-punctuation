@@ -38,7 +38,6 @@ class TokenIDConverter:
         return [self.token_list[i] for i in integers]
 
     def tokens2ids(self, tokens: Iterable[str]) -> List[int]:
-
         return [self.token2id.get(i, self.unk_id) for i in tokens]
 
 
