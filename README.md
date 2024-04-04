@@ -41,9 +41,11 @@
 
 
 git clone https://github.com/lovemefan/CT-Transformer-punctuation.git
+cd CT-Transformer-punctuation
 # download onnx model from huggingface
 wget "https://huggingface.co/lovemefan/ctt_punctuator/resolve/main/cttpunctuator/src/onnx/punc.onnx" -O cttpunctuator/src/onnx/punc.onnx
-cd CT-Transformer-punctuation
+# you can also download with huggingface mirror
+# wget "https://hf-mirror.com/lovemefan/ctt_punctuator/resolve/main/cttpunctuator/src/onnx/punc.onnx" -O cttpunctuator/src/onnx/punc.onnx
 pip install -e .
 ```
 
