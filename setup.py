@@ -18,7 +18,7 @@ requirements = {
         "setuptools<=65.0",
         "PyYAML",
         "typeguard==2.13.3",
-        "onnxruntime==1.14.1",
+        "onnxruntime>=1.14.1",
     ],
     "setup": [
         "numpy==1.24.2",
